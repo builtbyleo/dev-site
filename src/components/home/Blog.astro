@@ -1,3 +1,9 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+---
+
 <section class="mb-12 pt-10 border-t border-neutral-800 animate-fade-in-up">
   <div class="flex items-baseline justify-between mb-6">
     <h2 class="text-2xl font-semibold flex items-center text-white">
@@ -24,15 +30,26 @@
     >
   </div>
   <div class="space-y-3">
-    <a
-      class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4"
-      href="/blog/code-chunk"
-      ><span class="text-sm text-gray-500 sm:w-28 shrink-0 tabular-nums">
-        Jan 01, 2026</span
-      ><span
-        class="text-gray-200 group-hover:text-accent transition-colors duration-200"
-        >How the world is changing.</span
-      ></a
-    >
+    {
+      posts.map((post) => (
+        <a
+          class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4"
+            href=`blog/${post.id}`
+        >
+          <>
+            <span class="text-sm text-gray-500 sm:w-28 shrink-0 tabular-nums">
+              {new Date(post.data.pubDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "2-digit",
+                year: "numeric",
+              })}
+            </span>
+            <span class="text-gray-200 group-hover:text-accent transition-colors duration-200">
+              {post.data.title}
+            </span>
+          </>
+        </a>
+      ))
+    }
   </div>
 </section>
