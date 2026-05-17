@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import NavbarAstroComponent from "../components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -12,7 +13,8 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body>
+  <body class="bg-[#111111] max-w-4xl mx-auto px-5 sm:px-4 py-8">
+    <NavbarAstroComponent />
     <slot />
   </body>
 </html>

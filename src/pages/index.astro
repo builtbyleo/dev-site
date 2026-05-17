@@ -1,8 +1,10 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
+import Hero from "@components/home/Hero.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Blog from "@components/home/Blog.astro";
 ---
 
-<Layout>
-  <Welcome />
-</Layout>
+<BaseLayout>
+  <Hero />
+  <Blog />
+</BaseLayout>
