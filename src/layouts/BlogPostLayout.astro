@@ -1,5 +1,7 @@
 ---
 import "@src/global.css";
+
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -8,6 +10,8 @@ import "@src/global.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Blog</title>
+
+    <ClientRouter />
   </head>
   <body
     class="bg-[#101010] mx-auto grid max-w-7xl grid-cols-[180px_minmax(0,680px)_260px] gap-16 px-8 py-16"

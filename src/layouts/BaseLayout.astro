@@ -1,6 +1,7 @@
 ---
 import "@src/global.css";
 import NavbarAstroComponent from "../components/Navbar.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -11,9 +12,10 @@ import NavbarAstroComponent from "../components/Navbar.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Leonard Paturel</title>
+    <ClientRouter />
   </head>
-  <body class="bg-[#111111] max-w-4xl mx-auto px-5 sm:px-4 py-8">
+  <body class="bg-[#111111] max-w-2xl mx-auto px-5 sm:px-4 py-32">
     <NavbarAstroComponent />
     <slot />
   </body>

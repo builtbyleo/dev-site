@@ -1,8 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import BlogPostLayout from "@layouts/BlogPostLayout.astro";
-import ScrollspyAstroComponent from "@src/components/blog/scrollspy.astro";
-import TitleAstroComponent from "@src/components/blog/title.astro";
+import ScrollspyAstroComponent from "@src/components/blog/Scrollspy.astro";
+import TitleAstroComponent from "@src/components/blog/Title.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
