@@ -1,8 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import BlogPostLayout from "@layouts/BlogPostLayout.astro";
-import ScrollspyAstroComponent from "@src/components/blog/Scrollspy.astro";
-import TitleAstroComponent from "@src/components/blog/Title.astro";
+import Scrollspy from "@src/components/blog/Scrollspy.astro";
+import Title from "@src/components/blog/Title.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -29,7 +29,7 @@ const { Content, headings } = await render(post);
   </aside>
 
   <article class="min-w-0">
-    <TitleAstroComponent post={post} />
+    <Title post={post} />
     <div
       class="prose prose-invert max-w-none
     prose-p:mb-8 prose-p:leading-8 prose-p:text-neutral-300
@@ -43,5 +43,5 @@ const { Content, headings } = await render(post);
     </div>
   </article>
 
-  <ScrollspyAstroComponent headings={headings} />
+  <Scrollspy headings={headings} />
 </BlogPostLayout>

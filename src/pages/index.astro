@@ -1,10 +1,12 @@
 ---
 import Hero from "@components/home/Hero.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogList from "@components/home/BlogList.astro";
+import ShowCaseList from "@src/components/home/ShowCaseList.astro";
 ---
 
 <BaseLayout>
   <Hero />
-  <BlogList />
+  <ShowCaseList contentName="blog" content="blog" linkText="Posts" />
+  <ShowCaseList contentName="work" content="work" />
+  <ShowCaseList contentName="projects" content="projects" />
 </BaseLayout>
