@@ -1,7 +1,7 @@
 ---
 title: My Blog Post
 description: My first blog post
-pubDate: 2026-05-14
+date: 2026-05-14
 readTime: 2 mins
 ---
 
