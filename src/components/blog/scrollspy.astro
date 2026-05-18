@@ -1,0 +1,100 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+---
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const spyLine = document.querySelector<HTMLElement>("#spy-line");
+
+  const links = gsap.utils.toArray<HTMLAnchorElement>("[data-scrollspy-link]");
+
+  const sections = links
+    .map((link) => {
+      const id = link.getAttribute("href");
+      const section = id ? document.querySelector<HTMLElement>(id) : null;
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean) as { link: HTMLAnchorElement; section: HTMLElement }[];
+
+  sections.forEach(({ link, section }, index) => {
+    const nextSection = sections[index + 1]?.section;
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 30%",
+      endTrigger: nextSection || section,
+      end: nextSection ? "top 30%" : "bottom bottom",
+      onEnter: () => setActive(link),
+      onEnterBack: () => setActive(link),
+    });
+  });
+
+  function setActive(activeLink: HTMLAnchorElement) {
+    links.forEach((link) => link.classList.remove("active"));
+    activeLink.classList.add("active");
+
+    if (!spyLine) return;
+
+    const rect = activeLink.getBoundingClientRect();
+    const navRect = activeLink
+      .closest("[data-scrollspy-nav]")
+      ?.getBoundingClientRect();
+
+    if (!navRect) return;
+
+    gsap.to(spyLine, {
+      y: rect.top - navRect.top,
+      height: rect.height,
+      duration: 0.35,
+      ease: "power2.out",
+    });
+  }
+
+  requestAnimationFrame(() => {
+    if (links[0]) setActive(links[0]);
+  });
+</script>
+
+<aside class="relative hidden lg:block">
+  <div class="sticky top-16">
+    <nav data-scrollspy-nav class="relative border-l border-neutral-800 pl-8">
+      <div id="spy-line" class="absolute -left-px top-0 w-px bg-neutral-100">
+      </div>
+
+      <ul class="space-y-5">
+        {
+          headings.map((heading) => (
+            <li>
+              <a
+                data-scrollspy-link
+                href={`#${heading.slug}`}
+                class="block text-sm text-neutral-500 transition-colors duration-300 hover:text-neutral-200"
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>
+
+<style>
+  @reference "../../global.css";
+  [data-scrollspy-link].active {
+    @apply text-neutral-100;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
