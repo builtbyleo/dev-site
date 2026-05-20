@@ -7,6 +7,6 @@ description: >-
   event streaming over HTTP for fault-tolerant EVM data pipelines.
 date: 2026-10-15
 endDate: 2026-03-10
-language: ["rust"]
+language: ["rust", "async", "networking"]
 link: https://github.com/OpenZeppelin/Robust-Provider
 ---
