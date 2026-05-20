@@ -3,19 +3,19 @@ const pathname = Astro.url.pathname;
 
 const links = [
   { href: "/", label: "home" },
-  { href: "/work", label: "work" },
-  { href: "/projects", label: "projects" },
-  { href: "/blog", label: "blog" },
+  { href: "/work/", label: "work" },
+  { href: "/projects/", label: "projects" },
+  { href: "/blog/", label: "blog" },
 ];
 
 const baseLinkClass =
-  "hover:text-white transition-colors duration-200 py-2 px-1.5 sm:px-0 sm:py-0";
+  "hover:text-white hover:-translate-y-0.5 transition-transform duration-300 ease-in-out transition-colors duration-200 py-2 px-1.5 sm:px-0 sm:py-0";
 ---
 
 <nav class="mb-12 flex items-center justify-between text-sm">
   <div class="relative">
     <h1
-      class="animate-fade-in text-3xl font-semibold tracking-tight text-balance text-white"
+      class="animate-fade-in text-3xl font-semibold tracking-tight text-balance"
     >
       Leonard Paturel
     </h1>
@@ -34,7 +34,7 @@ const baseLinkClass =
             class:list={[
               baseLinkClass,
 
-              pathname === href ? "text-white" : "text-gray-500",
+              pathname === href ? "" : "text-gray-500",
             ]}
           >
             {label}

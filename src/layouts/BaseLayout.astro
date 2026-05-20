@@ -1,6 +1,7 @@
 ---
 import "@src/global.css";
 import Navbar from "../components/Navbar.astro";
+import Footer from "@src/components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 ---
 
@@ -15,8 +16,13 @@ import { ClientRouter } from "astro:transitions";
     <title>Leonard Paturel</title>
     <ClientRouter />
   </head>
-  <body class="mx-auto max-w-2xl bg-[#111111] px-5 py-32 sm:px-4">
-    <Navbar />
-    <slot />
+  <body
+    class="mx-auto flex min-h-screen max-w-2xl flex-col bg-[#111111] px-5 py-32 sm:px-4"
+  >
+    <main class="flex-1">
+      <Navbar />
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
