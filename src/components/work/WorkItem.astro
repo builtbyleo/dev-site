@@ -8,7 +8,7 @@ interface Props {
 const { item: workItem } = Astro.props;
 ---
 
-<a href={workItem.data.link}>
+<a href={workItem.data.link} target="_blank" rel="noopener noreferrer">
   <div class="group">
     <div class="flex items-center justify-between">
       <div>

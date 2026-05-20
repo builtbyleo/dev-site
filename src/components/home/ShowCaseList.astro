@@ -10,12 +10,14 @@ interface Props {
 
 const { contentName, content, linkText } = Astro.props;
 
-const contentList = await getCollection(content);
+const contentList = await getCollection(content).then((content) =>
+  content.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+);
 ---
 
 <section class="mb-12 pt-10">
   <div class="mb-6 flex items-baseline justify-between">
-    <h2 class="flex items-center text-2xl font-semibold text-white">
+    <h2 class="font-tiposka flex items-center text-xl font-semibold text-white">
       {contentName}
     </h2>
 
@@ -46,19 +48,18 @@ const contentList = await getCollection(content);
     {
       contentList.map((item) => (
         <a
-          class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4"
+          class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
           href={`${contentName}/${item.id}`}
         >
-          <span class="shrink-0 text-sm text-gray-500 tabular-nums sm:w-28">
-            {new Date(item.data.date).toLocaleDateString("en-US", {
+          <span class="group-hover:text-accent text-gray-200 transition-colors duration-200 sm:order-2">
+            {item.data.title}
+          </span>
+          <span class="shrink-0 text-sm text-gray-500 tabular-nums sm:order-1 sm:w-28">
+            {item.data.date.toLocaleDateString("en-US", {
               month: "short",
               day: "2-digit",
               year: "numeric",
             })}
-          </span>
-
-          <span class="group-hover:text-accent text-gray-200 transition-colors duration-200">
-            {item.data.title}
           </span>
         </a>
       ))

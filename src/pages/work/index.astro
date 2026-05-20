@@ -10,8 +10,7 @@ const workList = await getCollection("work").then((workList) =>
 
 <BaseLayout>
   <header class="mb-5 space-y-4">Collection of work i've built.</header>
-
-  <div>
+  <div class="mb-5">
     {workList.map((item) => <WorkItem item={item} />)}
   </div>
 </BaseLayout>
