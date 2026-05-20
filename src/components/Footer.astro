@@ -1,26 +1,23 @@
 ---
 import GithubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
+
+const linkRef = {
+  linkedin: "https://www.linkedin.com/in/leonard-p-6b19771b7/",
+  github: "https://github.com/builtbyleo",
+};
 ---
 
-<section class="border-t-[0.5px] border-t-amber-700">
+<section class="border-t-[0.5px]">
   <div class="mt-6 flex items-center justify-between">
     <h1>hello</h1>
     <div class="flex items-center justify-between gap-2">
-      <a
-        href="https://github.com/0xleodevv"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GithubIcon class="size-5 fill-gray-300" />
+      <a href={linkRef.github} target="_blank" rel="noopener noreferrer">
+        <GithubIcon class="fill-text/75 size-5 transition-colors" />
       </a>
 
-      <a
-        href="https://www.linkedin.com/in/leonard-p-6b19771b7/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <LinkedInIcon class="size-5 fill-gray-300" />
+      <a href={linkRef.linkedin} target="_blank" rel="noopener noreferrer">
+        <LinkedInIcon class="fill-text/75 size-5 transition-colors" />
       </a>
     </div>
   </div>
