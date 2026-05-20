@@ -1,8 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-main: #111111;
+  --color-text: #fffcf2;
+  --color-accent: #f97316;
+}
+
 @layer base {
   body {
-    @apply bg-black text-[#fffcf2];
+    @apply bg-main text-foreground;
   }
 }
