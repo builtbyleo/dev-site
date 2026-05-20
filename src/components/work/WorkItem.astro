@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  item: CollectionEntry<"work">;
+}
+
+const { item: workItem } = Astro.props;
+---
+
+<a href={workItem.data.link}>
+  <div class="group">
+    <div class="flex items-center justify-between">
+      <div>
+        <span class="text-gray-200 transition-colors duration-200">
+          {workItem.data.title}
+        </span>
+
+        <p class="shrink-0 text-sm text-gray-500 tabular-nums sm:w-28">
+          {
+            workItem.data.date.toLocaleDateString("en-US", {
+              month: "short",
+              day: "2-digit",
+              year: "numeric",
+            })
+          }
+        </p>
+      </div>
+
+      <div class="inline-flex items-center text-sm">
+        <span
+          class="inline-block transition-all duration-300 ease-out group-hover:-translate-x-1"
+        >
+          [
+        </span>
+
+        <span class="px-1"> View </span>
+
+        <span
+          class="inline-block transition-all duration-300 ease-out group-hover:translate-x-1"
+        >
+          ]
+        </span>
+      </div>
+    </div>
+
+    <p>{workItem.data.description}</p>
+  </div>
+</a>

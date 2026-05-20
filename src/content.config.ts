@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { string } from "astro:schema";
 
 const baseContentSchema = z.object({
   title: z.string(),
@@ -17,7 +18,13 @@ const blog = defineCollection({
 
 const work = defineCollection({
   loader: glob({ base: "./src/content/work", pattern: "**/*.{md,mdx}" }),
-  schema: baseContentSchema.extend({}),
+  schema: baseContentSchema.extend({
+    description: z.string(),
+    company: z.string(),
+    endDate: z.coerce.date(),
+    language: z.array(string()),
+    link: z.url(),
+  }),
 });
 
 const projects = defineCollection({
