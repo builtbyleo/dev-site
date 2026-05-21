@@ -1,6 +1,6 @@
 ---
 title: Robust Provider
-company: OpenZeppelin
+organization: OpenZeppelin
 description: >-
   Authored a Rust crate extending Alloy providers with resilient pubsub
   handling, including automatic recovery from dropped subscriptions and reliable

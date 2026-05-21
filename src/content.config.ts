@@ -20,7 +20,7 @@ const work = defineCollection({
   loader: glob({ base: "./src/content/work", pattern: "**/*.{md,mdx}" }),
   schema: baseContentSchema.extend({
     description: z.string(),
-    company: z.string(),
+    organization: z.string(),
     endDate: z.coerce.date(),
     technology: z.array(string()),
     link: z.url(),
@@ -29,7 +29,13 @@ const work = defineCollection({
 
 const projects = defineCollection({
   loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
-  schema: baseContentSchema.extend({}),
+  schema: baseContentSchema.extend({
+    description: z.string(),
+    organization: z.string(),
+    endDate: z.coerce.date(),
+    technology: z.array(string()),
+    link: z.url(),
+  }),
 });
 
 export const collections = { blog, work, projects };

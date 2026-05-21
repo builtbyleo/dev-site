@@ -1,6 +1,6 @@
 ---
 title: Event Scanner
-company: OpenZeppelin
+organization: OpenZeppelin
 description: >-
   Built a high-performance, multi-threaded Rust library for streaming EVM smart
   contract events, now used in production by infrastructure teams including

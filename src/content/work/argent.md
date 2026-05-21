@@ -1,6 +1,6 @@
 ---
 title: Smart Accounts 
-company: Ready (Formerly Argent)
+organization: Ready (Formerly Argent)
 description: >-
   Worked on Argent's Starknet account abstraction contracts in Cairo, including
   the primary account, multisig, and session keys. Collectively these contracts secure over a billion dollars.

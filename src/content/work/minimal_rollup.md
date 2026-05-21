@@ -1,6 +1,6 @@
 ---
 title: Minimal Rollup
-company: OpenZeppelin
+organization: OpenZeppelin
 description: >-
   Co-designed and implemented smart contracts for a based rollup protocol with
   Taiko. Worked across protocol architecture, cross-chain signalling mechanisms,
