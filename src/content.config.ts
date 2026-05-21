@@ -22,7 +22,7 @@ const work = defineCollection({
     description: z.string(),
     company: z.string(),
     endDate: z.coerce.date(),
-    language: z.array(string()),
+    technology: z.array(string()),
     link: z.url(),
   }),
 });

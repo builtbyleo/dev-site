@@ -8,6 +8,6 @@ description: >-
   scan 10,000 events in around 250ms.
 date: 2025-07-25
 endDate: 2026-02-01
-language: ["rust", "async", "multithreading"]
+technology: ["rust", "async", "multithreading"]
 link: https://github.com/OpenZeppelin/Event-Scanner
 ---
