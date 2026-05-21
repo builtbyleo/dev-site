@@ -47,7 +47,7 @@ const contentList = await getCollection(content).then((content) =>
 
   <div class="space-y-2">
     {
-      contentList.length > 0 ? (
+      contentList.length > 50 ? (
         contentList.map((item) => (
           <a
             class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
@@ -68,8 +68,8 @@ const contentList = await getCollection(content).then((content) =>
           </a>
         ))
       ) : (
-        <div class="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-gray-400">
-          No content yet — still working on it.
+        <div class="flex justify-center rounded-lg px-4 py-3 text-sm text-gray-400">
+          Nothing yet still working on it.
         </div>
       )
     }

@@ -3,7 +3,7 @@ title: Smart Accounts
 organization: Ready (Formerly Argent)
 date: 2024-12-20
 endDate: 2025-12-15
-technology: ["cairo", "starknet", "smart contracts", "typescript"]
+technology: ["cairo", "starknet", "account abstraction", "typescript"]
 link: https://github.com/argentlabs/argent-contracts-starknet
 ---
 

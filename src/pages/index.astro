@@ -1,11 +1,12 @@
 ---
-import Hero from "@components/home/Hero.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ShowCaseList from "@src/components/home/ShowCaseList.astro";
 ---
 
 <BaseLayout>
-  <Hero />
+  <header class="mb-16 space-y-4">
+    I'm a software engineer working in Rust.
+  </header>
   <ShowCaseList contentName="work" content="work" showDay={false} />
   <ShowCaseList contentName="projects" content="projects" />
   <ShowCaseList contentName="blog" content="blog" linkText="see all" />

@@ -3,7 +3,7 @@ title: Event Scanner
 organization: OpenZeppelin
 date: 2025-07-25
 endDate: 2026-02-01
-technology: ["rust", "async", "multithreading"]
+technology: ["rust", "alloy", "evm"]
 link: https://github.com/OpenZeppelin/Event-Scanner
 ---
 
