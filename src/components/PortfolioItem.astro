@@ -37,11 +37,16 @@ const formatMonthYear = (date: Date | EndDate) =>
           </h1>
         </div>
       </div>
-      <time class="shrink-0 text-sm text-gray-500 tabular-nums">
-        {formatMonthYear(item.data.date)}
-        <span>-</span>
-        {formatMonthYear(item.data.endDate)}
-      </time>
+      <div
+        class="flex shrink-0 flex-col items-end text-right text-sm text-gray-500"
+      >
+        <time class="tabular-nums">
+          {formatMonthYear(item.data.date)}
+          <span>-</span>
+          {formatMonthYear(item.data.endDate)}
+        </time>
+        {item.data.organization && <span>{item.data.organization}</span>}
+      </div>
     </div>
   </div>
   <div class="flex items-center text-sm text-gray-500">

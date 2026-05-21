@@ -9,7 +9,6 @@ const baseContentSchema = z.object({
 });
 
 const portfolioItemSchema = baseContentSchema.extend({
-  organization: z.string(),
   endDate: z.union([z.coerce.date(), z.literal("present")]),
   technology: z.array(string()),
   link: z.url(),
@@ -25,12 +24,16 @@ const notes = defineCollection({
 
 const work = defineCollection({
   loader: glob({ base: "./src/content/work", pattern: "**/*.{md,mdx}" }),
-  schema: portfolioItemSchema,
+  schema: portfolioItemSchema.extend({
+    organization: z.string(),
+  }),
 });
 
 const projects = defineCollection({
   loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
-  schema: portfolioItemSchema,
+  schema: portfolioItemSchema.extend({
+    organization: z.string().optional(),
+  }),
 });
 
 export const collections = { notes, work, projects };
