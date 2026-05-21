@@ -8,42 +8,109 @@ interface Props {
 const { item: workItem } = Astro.props;
 ---
 
-<a href={workItem.data.link} target="_blank" rel="noopener noreferrer">
-  <div class="group">
+<a
+  href={workItem.data.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="corner-draw group -mx-4 mb-3 block px-4 py-3 focus-visible:outline-offset-4"
+>
+  <div>
     <div class="flex items-center justify-between">
       <div>
-        <span class="text-gray-200 transition-colors duration-200">
-          {workItem.data.title}
-        </span>
-
-        <p class="shrink-0 text-sm text-gray-500 tabular-nums sm:w-28">
-          {
-            workItem.data.date.toLocaleDateString("en-US", {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            })
-          }
-        </p>
+        <div class="flex w-full items-center justify-between">
+          <h1>
+            {workItem.data.title}
+          </h1>
+        </div>
       </div>
-
-      <div class="inline-flex items-center text-sm">
-        <span
-          class="inline-block transition-all duration-300 ease-out group-hover:-translate-x-1"
-        >
-          [
-        </span>
-
-        <span class="px-1"> View </span>
-
-        <span
-          class="inline-block transition-all duration-300 ease-out group-hover:translate-x-1"
-        >
-          ]
-        </span>
-      </div>
+      <p class="shrink-0 text-sm text-gray-500 tabular-nums">
+        {
+          workItem.data.date.toLocaleDateString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          })
+        }
+        <span>-</span>
+        {
+          workItem.data.endDate.toLocaleDateString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          })
+        }
+      </p>
     </div>
-
-    <p>{workItem.data.description}</p>
   </div>
+  <div class="flex items-center text-sm text-gray-500">
+    {
+      workItem.data.language.map((item, index) => (
+        <>
+          {index > 0 && (
+            <span class="mx-1 text-xl font-bold text-gray-600">·</span>
+          )}
+          <span>{item}</span>
+        </>
+      ))
+    }
+  </div>
+  <p>{workItem.data.description}</p>
 </a>
+
+<style>
+  @layer components {
+    .corner-draw {
+      --corner-size: 1.5rem;
+      --corner-thickness: 1px;
+
+      background-image:
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent)),
+        linear-gradient(var(--color-accent), var(--color-accent));
+      background-position:
+        top left,
+        top left,
+        top right,
+        top right,
+        bottom left,
+        bottom left,
+        bottom right,
+        bottom right;
+      background-repeat: no-repeat;
+      background-size:
+        0 var(--corner-thickness),
+        var(--corner-thickness) 0,
+        0 var(--corner-thickness),
+        var(--corner-thickness) 0,
+        0 var(--corner-thickness),
+        var(--corner-thickness) 0,
+        0 var(--corner-thickness),
+        var(--corner-thickness) 0;
+      transition: background-size 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .corner-draw:hover,
+    .corner-draw:focus-visible {
+      background-size:
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size),
+        var(--corner-size) var(--corner-thickness),
+        var(--corner-thickness) var(--corner-size);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .corner-draw {
+        transition-duration: 1ms;
+      }
+    }
+  }
+</style>
