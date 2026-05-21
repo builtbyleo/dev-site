@@ -5,17 +5,18 @@ import { getCollection } from "astro:content";
 interface Props {
   contentName: string;
   linkText?: string;
+  showDay?: boolean;
   content: CollectionKey;
 }
 
-const { contentName, content, linkText } = Astro.props;
+const { contentName, content, linkText, showDay = true } = Astro.props;
 
 const contentList = await getCollection(content).then((content) =>
   content.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
 );
 ---
 
-<section class="mb-12 pt-10">
+<section class="pb-7">
   <div class="mb-6 flex items-baseline justify-between">
     <h2 class="font-tiposka flex items-center text-xl font-semibold text-white">
       {contentName}
@@ -44,7 +45,7 @@ const contentList = await getCollection(content).then((content) =>
     </a>
   </div>
 
-  <div class="space-y-3">
+  <div class="space-y-2">
     {
       contentList.map((item) => (
         <a
@@ -55,11 +56,12 @@ const contentList = await getCollection(content).then((content) =>
             {item.data.title}
           </span>
           <span class="shrink-0 text-sm text-gray-500 tabular-nums sm:order-1 sm:w-28">
-            {item.data.date.toLocaleDateString("en-US", {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            })}
+            {item.data.date.toLocaleDateString(
+              "en-US",
+              showDay
+                ? { month: "short", day: "2-digit", year: "numeric" }
+                : { month: "short", year: "numeric" },
+            )}
           </span>
         </a>
       ))
