@@ -9,8 +9,7 @@ const notesList = await getCollection("notes").then((notesList) =>
 
 <BaseLayout>
   <header class="border-text mb-2 space-y-4 border-b-[0.5px] pb-5">
-    This will hopefully be a collection of articles exploring topics i find
-    interesting.
+    This will be a collection of articles exploring topics i find interesting.
   </header>
   {
     notesList.length === 0 ? (
