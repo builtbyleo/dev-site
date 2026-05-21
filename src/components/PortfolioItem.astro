@@ -1,15 +1,28 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+type PortfolioEntry = CollectionEntry<"work"> | CollectionEntry<"projects">;
+type EndDate = PortfolioEntry["data"]["endDate"];
 
 interface Props {
-  item: CollectionEntry<"work">;
+  item: PortfolioEntry;
 }
 
-const { item: workItem } = Astro.props;
+const { item } = Astro.props;
+const { Content } = await render(item);
+
+const formatMonthYear = (date: Date | EndDate) =>
+  date === "present"
+    ? "present"
+    : date.toLocaleDateString("en-US", {
+        month: "short",
+        year: "numeric",
+      });
 ---
 
 <a
-  href={workItem.data.link}
+  href={item.data.link}
   target="_blank"
   rel="noopener noreferrer"
   class="corner-draw group -mx-4 mb-3 block px-4 py-3 focus-visible:outline-offset-4"
@@ -19,30 +32,20 @@ const { item: workItem } = Astro.props;
       <div>
         <div class="flex w-full items-center justify-between">
           <h1>
-            {workItem.data.title}
+            {item.data.title}
           </h1>
         </div>
       </div>
       <p class="shrink-0 text-sm text-gray-500 tabular-nums">
-        {
-          workItem.data.date.toLocaleDateString("en-US", {
-            month: "short",
-            year: "numeric",
-          })
-        }
+        {formatMonthYear(item.data.date)}
         <span>-</span>
-        {
-          workItem.data.endDate.toLocaleDateString("en-US", {
-            month: "short",
-            year: "numeric",
-          })
-        }
+        {formatMonthYear(item.data.endDate)}
       </p>
     </div>
   </div>
   <div class="flex items-center text-sm text-gray-500">
     {
-      workItem.data.technology.map((item, index) => (
+      item.data.technology.map((item, index) => (
         <>
           {index > 0 && (
             <span class="mx-1 text-xl font-bold text-gray-600">·</span>
@@ -52,7 +55,7 @@ const { item: workItem } = Astro.props;
       ))
     }
   </div>
-  <p>{workItem.data.description}</p>
+  <Content />
 </a>
 
 <style>

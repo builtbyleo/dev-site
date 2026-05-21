@@ -1,5 +1,16 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import PortfolioItem from "@src/components/PortfolioItem.astro";
+
+const projectList = await getCollection("projects").then((projectList) =>
+  projectList.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+);
 ---
 
-<BaseLayout />
+<BaseLayout>
+  <header class="mb-5 space-y-4">Collection of projects i've built.</header>
+  <div class="mb-5">
+    {projectList.map((item) => <PortfolioItem item={item} />)}
+  </div>
+</BaseLayout>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import WorkItem from "@src/components/work/WorkItem.astro";
+import PortfolioItem from "@src/components/PortfolioItem.astro";
 
 const workList = await getCollection("work").then((workList) =>
   workList.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
@@ -11,6 +11,6 @@ const workList = await getCollection("work").then((workList) =>
 <BaseLayout>
   <header class="mb-5 space-y-4">Collection of work i've built.</header>
   <div class="mb-5">
-    {workList.map((item) => <WorkItem item={item} />)}
+    {workList.map((item) => <PortfolioItem item={item} />)}
   </div>
 </BaseLayout>
