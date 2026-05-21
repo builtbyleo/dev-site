@@ -15,8 +15,8 @@ const portfolioItemSchema = baseContentSchema.extend({
   link: z.url(),
 });
 
-const blog = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
+const notes = defineCollection({
+  loader: glob({ base: "./src/content/notes", pattern: "**/*.{md,mdx}" }),
   schema: baseContentSchema.extend({
     description: z.string(),
     readTime: z.string(),
@@ -33,4 +33,4 @@ const projects = defineCollection({
   schema: portfolioItemSchema,
 });
 
-export const collections = { blog, work, projects };
+export const collections = { notes, work, projects };

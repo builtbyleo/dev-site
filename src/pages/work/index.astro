@@ -9,7 +9,9 @@ const workList = await getCollection("work").then((workList) =>
 ---
 
 <BaseLayout>
-  <header class="mb-5 space-y-4">Collection of work i've built.</header>
+  <header class="border-text mb-2 space-y-4 border-b-[0.5px] pb-5">
+    It's not much but it's honest work.
+  </header>
   <div class="mb-5">
     {workList.map((item) => <PortfolioItem item={item} />)}
   </div>
