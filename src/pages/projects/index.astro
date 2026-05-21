@@ -9,7 +9,7 @@ const projectList = await getCollection("projects").then((projectList) =>
 ---
 
 <BaseLayout>
-  <header class="mb-5 space-y-4">Collection of projects i've built.</header>
+  <header class="mb-5">Collection of projects i've built.</header>
   <div class="mb-5">
     {projectList.map((item) => <PortfolioItem item={item} />)}
   </div>

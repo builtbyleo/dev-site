@@ -1,8 +1,46 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-// import BlogList from "@components/home/BlogList.astro";
+import { getCollection } from "astro:content";
+
+const blogList = await getCollection("blog").then((blogList) =>
+  blogList.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+);
 ---
 
 <BaseLayout>
-  <!-- <BlogList /> -->
+  <section class="mb-5">hello</section>
+  {
+    blogList.length === 0 ? (
+      <div class="flex justify-center rounded-lg px-4 py-3 text-sm text-gray-400">
+        Nothing yet still working on it.
+      </div>
+    ) : (
+      <div class="space-y-1">
+        {blogList.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group flex justify-between gap-6 py-2"
+          >
+            <div class="min-w-0">
+              <h1 class="group-hover:text-accent transition-colors duration-200">
+                {post.data.title}
+              </h1>
+              <p class="mt-1 text-sm text-gray-500">{post.data.description}</p>
+            </div>
+
+            <div class="shrink-0 text-right tabular-nums">
+              <time class="text-sm" datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                })}
+              </time>
+              <p class="mt-1 text-sm text-gray-500">{post.data.readTime}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )
+  }
 </BaseLayout>

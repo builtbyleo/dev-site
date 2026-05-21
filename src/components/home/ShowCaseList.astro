@@ -47,7 +47,7 @@ const contentList = await getCollection(content).then((content) =>
 
   <div class="space-y-2">
     {
-      contentList.length > 50 ? (
+      contentList.length > 0 ? (
         contentList.map((item) => (
           <a
             class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
