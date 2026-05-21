@@ -1,29 +1,59 @@
 ---
 import GithubIcon from "../assets/icons/github.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
+import LinkArrow from "@components/ui/LinkArrow.astro";
 
 const linkRef = {
+  email: "mailto:contact.wildland129@simplelogin.com",
+  dotfiles: "https://github.com/builtbyleo/dotfiles",
+  astro: "https://github.com/withastro/astro",
   linkedin: "https://www.linkedin.com/in/leonard-p-6b19771b7/",
   github: "https://github.com/builtbyleo",
 };
+
+const footerLinks = [
+  { href: linkRef.email, label: "Contact me" },
+  {
+    href: linkRef.dotfiles,
+    label: "Dotfiles, enter at your own risk",
+    newTab: true,
+  },
+];
 ---
 
-<section class="border-t-[0.5px]">
-  <div class="mt-6 mb-5 flex items-start justify-between">
-    <div>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-      <h1>hello</h1>
-    </div>
-    <div class="flex items-center justify-between gap-2">
-      <a href={linkRef.github} target="_blank" rel="noopener noreferrer">
-        <GithubIcon class="fill-text/75 size-5 transition-colors" />
-      </a>
+<section class="border-text/15 border-t-[0.5px]">
+  <div class="mt-6 mb-5 space-y-5">
+    <div class="flex items-start justify-between gap-6">
+      <div class="flex flex-col gap-2 text-sm">
+        {
+          footerLinks.map(({ href, label, newTab }) => (
+            <LinkArrow text={label} href={href} newTab={newTab} />
+          ))
+        }
+      </div>
 
-      <a href={linkRef.linkedin} target="_blank" rel="noopener noreferrer">
-        <LinkedInIcon class="fill-text/75 size-5 transition-colors" />
-      </a>
+      <div class="flex items-center gap-2">
+        <a href={linkRef.github} target="_blank" rel="noopener noreferrer">
+          <GithubIcon
+            class="hover:fill-accent fill-text/75 size-5 transition-colors"
+          />
+        </a>
+
+        <a href={linkRef.linkedin} target="_blank" rel="noopener noreferrer">
+          <LinkedInIcon
+            class="hover:fill-accent fill-text/75 size-5 transition-colors"
+          />
+        </a>
+      </div>
     </div>
+
+    <p class="max-w-md text-sm text-gray-400">
+      Built using <a
+        href={linkRef.astro}
+        class="hover:text-accent text-text/75 transition-colors duration-200"
+        target="_blank"
+        rel="noopener noreferrer">Astro ♥︎</a
+      >
+    </p>
   </div>
 </section>
