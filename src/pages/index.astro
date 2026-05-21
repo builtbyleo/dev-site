@@ -7,7 +7,17 @@ import ShowCaseList from "@src/components/home/ShowCaseList.astro";
   <header class="mb-16 space-y-4">
     I'm a software engineer working in Rust.
   </header>
-  <ShowCaseList contentName="work" content="work" showDay={false} />
-  <ShowCaseList contentName="projects" content="projects" showDay={false} />
+  <ShowCaseList
+    contentName="work"
+    content="work"
+    showDay={false}
+    linkText="overview"
+  />
+  <ShowCaseList
+    contentName="projects"
+    content="projects"
+    showDay={false}
+    linkText="overview"
+  />
   <ShowCaseList contentName="blog" content="blog" linkText="see all" />
 </BaseLayout>
