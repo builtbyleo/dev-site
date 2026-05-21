@@ -1,5 +1,5 @@
 ---
-title: On Chain Card Game
+title: It's The Season
 organization: ITS
 date: 2024-09-01
 endDate: present
