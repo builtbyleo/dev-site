@@ -22,10 +22,11 @@ const formatMonthYear = (date: Date | EndDate) =>
 ---
 
 <a
+  id={item.id}
   href={item.data.link}
   target="_blank"
   rel="noopener noreferrer"
-  class="corner-draw group -mx-4 mb-3 block px-4 py-3 focus-visible:outline-offset-4"
+  class="corner-draw group -mx-4 mb-3 block scroll-mt-28 px-4 py-3 focus-visible:outline-offset-4"
 >
   <div>
     <div class="flex items-center justify-between">
@@ -55,7 +56,11 @@ const formatMonthYear = (date: Date | EndDate) =>
       ))
     }
   </div>
-  <Content />
+  <div
+    class="prose prose-invert prose-p:text-justify prose-p:leading-5 prose-p:font-roboto font-medium"
+  >
+    <Content />
+  </div>
 </a>
 
 <style>
@@ -96,7 +101,8 @@ const formatMonthYear = (date: Date | EndDate) =>
     }
 
     .corner-draw:hover,
-    .corner-draw:focus-visible {
+    .corner-draw:focus-visible,
+    .corner-draw:target {
       background-size:
         var(--corner-size) var(--corner-thickness),
         var(--corner-thickness) var(--corner-size),

@@ -14,6 +14,13 @@ const { contentName, content, linkText, showDay = true } = Astro.props;
 const contentList = await getCollection(content).then((content) =>
   content.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
 );
+
+const sectionHref = `/${contentName}`;
+const hasAnchoredEntries = content === "work" || content === "projects";
+const getItemHref = (item: (typeof contentList)[number]) =>
+  hasAnchoredEntries
+    ? `${sectionHref}#${item.id}`
+    : `${sectionHref}/${item.id}`;
 ---
 
 <section class="pb-7">
@@ -29,7 +36,7 @@ const contentList = await getCollection(content).then((content) =>
           ? "opacity-100 hover:underline"
           : "pointer-events-none opacity-0",
       ]}
-      href={contentName}
+      href={sectionHref}
       aria-hidden={contentList.length === 0}
     >
       {linkText ?? contentName}
@@ -59,7 +66,7 @@ const contentList = await getCollection(content).then((content) =>
         contentList.map((item) => (
           <a
             class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
-            href={`${contentName}/${item.id}`}
+            href={getItemHref(item)}
           >
             <span class="group-hover:text-accent text-gray-200 transition-colors duration-200 sm:order-2">
               {item.data.title}
