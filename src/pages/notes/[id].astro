@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import BlogPostLayout from "@layouts/BlogPostLayout.astro";
+import NotesLayout from "@layouts/NotesLayout.astro";
 import Scrollspy from "@src/components/notes/Scrollspy.astro";
 
 export async function getStaticPaths() {
@@ -16,7 +16,7 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 ---
 
-<BlogPostLayout>
+<NotesLayout>
   <aside class="pt-1">
     <a
       href="/"
@@ -51,4 +51,4 @@ const { Content, headings } = await render(post);
   </article>
 
   <Scrollspy headings={headings} />
-</BlogPostLayout>
+</NotesLayout>
