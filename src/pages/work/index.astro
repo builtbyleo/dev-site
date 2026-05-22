@@ -9,10 +9,6 @@ const workList = await getCollection("work").then((workList) =>
 ---
 
 <BaseLayout>
-  <header class="border-text mb-2 space-y-4 border-b-[0.5px] pb-5">
-    My career highlights, you can explore the github repos by clicking on the
-    cards.
-  </header>
   <div class="mb-5">
     {workList.map((item) => <PortfolioItem item={item} />)}
   </div>

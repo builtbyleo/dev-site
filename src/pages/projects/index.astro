@@ -9,9 +9,6 @@ const projectList = await getCollection("projects").then((projectList) =>
 ---
 
 <BaseLayout>
-  <header class="border-text mb-2 border-b-[0.5px] pb-5">
-    It's not much but it's honest work.
-  </header>
   <div class="mb-5">
     {projectList.map((item) => <PortfolioItem item={item} />)}
   </div>
