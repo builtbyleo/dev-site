@@ -33,15 +33,29 @@ const footerLinks = [
       </div>
 
       <div class="flex items-center gap-2">
-        <a href={linkRef.github} target="_blank" rel="noopener noreferrer">
+        <a
+          href={linkRef.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
           <GithubIcon
             class="hover:fill-accent fill-text/75 size-5 transition-colors"
+            aria-hidden="true"
+            focusable="false"
           />
         </a>
 
-        <a href={linkRef.linkedin} target="_blank" rel="noopener noreferrer">
+        <a
+          href={linkRef.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
+        >
           <LinkedInIcon
             class="hover:fill-accent fill-text/75 size-5 transition-colors"
+            aria-hidden="true"
+            focusable="false"
           />
         </a>
       </div>
