@@ -1,7 +1,7 @@
 ---
 title: Robust Provider
 organization: OpenZeppelin
-date: 2026-10-15
+date: 2025-10-15
 endDate: 2026-03-10
 technology: ["rust", "alloy", "json-rpc"]
 link: https://github.com/OpenZeppelin/Robust-Provider
