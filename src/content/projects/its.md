@@ -1,7 +1,7 @@
 ---
 title: It's The Season
 organization: ITS
-date: 2024-09-01
+date: 2025-09-01
 endDate: present
 technology: ["solidity", "smart contracts", "megaeth", "foundry"]
 link: https://itstheseason.xyz/
